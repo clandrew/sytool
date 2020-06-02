@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,20 +21,23 @@ namespace ystool
         }
 
         Mode mode;
-        StringBuilder stringBuilder;
+        StringBuilder allText;
+        int currentWordStartIndex;
+
         int wordCount;
 
         public Form1()
         {
             InitializeComponent();
 
-            stringBuilder = new StringBuilder();
+            allText = new StringBuilder();
 
             UpdateControlVisibility(Mode.ChooseTarget);
 
             finishButton.Enabled = false;
 
             wordCount = 0;
+            currentWordStartIndex = -1;
         }
 
         private void UpdateControlVisibility(Mode newMode)
@@ -64,7 +68,7 @@ namespace ystool
         {
             UpdateControlVisibility(Mode.ViewResult);
 
-            resultBox.Text = stringBuilder.ToString();
+            resultBox.Text = allText.ToString();
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -72,18 +76,32 @@ namespace ystool
             if(mode == Mode.Type)
             {
                 letterTextBox.Text = e.KeyChar.ToString();
-                stringBuilder.Append(e.KeyChar);
+                allText.Append(e.KeyChar);
 
-                if (stringBuilder.Length > 1 && char.IsWhiteSpace(e.KeyChar) && !char.IsWhiteSpace(stringBuilder[stringBuilder.Length - 2]))
+                if (char.IsWhiteSpace(e.KeyChar))
                 {
-                    wordCount++;
+                    // Check if we're completing a word
+                    if (currentWordStartIndex != -1)
+                    {
+                        wordCount++;
+                        currentWordStartIndex = -1;
+                    }
+                }
+                else // Input a letter
+                {
+                    // First word
+                    if (currentWordStartIndex == -1)
+                    {
+                        currentWordStartIndex = allText.Length - 1;
+                    }
                 }
 
                 if (wordCount <= wordProgressBar.Maximum)
                 {
                     wordProgressBar.Value = wordCount;
                 }
-                else
+
+                if (wordCount >= wordProgressBar.Maximum)
                 {
                     finishButton.Enabled = true;
                 }

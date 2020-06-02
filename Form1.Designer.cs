@@ -63,7 +63,7 @@
             0,
             0});
             this.targetWordCountNumericUpDown.Minimum = new decimal(new int[] {
-            50,
+            2,
             0,
             0,
             0});
@@ -71,7 +71,7 @@
             this.targetWordCountNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.targetWordCountNumericUpDown.TabIndex = 1;
             this.targetWordCountNumericUpDown.Value = new decimal(new int[] {
-            50,
+            2,
             0,
             0,
             0});
