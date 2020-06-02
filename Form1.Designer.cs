@@ -1,4 +1,4 @@
-﻿namespace ystool
+namespace sytool
 {
     partial class Form1
     {
@@ -153,7 +153,7 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.resultBox);
             this.Name = "Form1";
-            this.Text = "ystool";
+            this.Text = "sytool";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.targetWordCountNumericUpDown)).EndInit();
             this.ResumeLayout(false);
