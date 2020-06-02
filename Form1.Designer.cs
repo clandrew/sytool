@@ -32,9 +32,10 @@
             this.targetWordCountNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.targetWordCountLabel = new System.Windows.Forms.Label();
             this.wordProgressBar = new System.Windows.Forms.ProgressBar();
-            this.letterTextBox = new System.Windows.Forms.TextBox();
             this.finishButton = new System.Windows.Forms.Button();
             this.resultBox = new System.Windows.Forms.TextBox();
+            this.letterTextBox = new System.Windows.Forms.TextBox();
+            this.restartButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.targetWordCountNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             0,
             0});
             this.targetWordCountNumericUpDown.Minimum = new decimal(new int[] {
-            2,
+            50,
             0,
             0,
             0});
@@ -71,7 +72,7 @@
             this.targetWordCountNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.targetWordCountNumericUpDown.TabIndex = 1;
             this.targetWordCountNumericUpDown.Value = new decimal(new int[] {
-            2,
+            50,
             0,
             0,
             0});
@@ -92,17 +93,6 @@
             this.wordProgressBar.Name = "wordProgressBar";
             this.wordProgressBar.Size = new System.Drawing.Size(260, 23);
             this.wordProgressBar.TabIndex = 3;
-            // 
-            // letterTextBox
-            // 
-            this.letterTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.letterTextBox.Enabled = false;
-            this.letterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.letterTextBox.Location = new System.Drawing.Point(0, 193);
-            this.letterTextBox.Name = "letterTextBox";
-            this.letterTextBox.Size = new System.Drawing.Size(284, 68);
-            this.letterTextBox.TabIndex = 4;
-            this.letterTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // finishButton
             // 
@@ -127,11 +117,34 @@
             this.resultBox.TabIndex = 6;
             this.resultBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.resultBox_KeyDown);
             // 
+            // letterTextBox
+            // 
+            this.letterTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.letterTextBox.Enabled = false;
+            this.letterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.letterTextBox.Location = new System.Drawing.Point(0, 193);
+            this.letterTextBox.Name = "letterTextBox";
+            this.letterTextBox.Size = new System.Drawing.Size(284, 68);
+            this.letterTextBox.TabIndex = 4;
+            this.letterTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // restartButton
+            // 
+            this.restartButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.restartButton.Location = new System.Drawing.Point(0, 170);
+            this.restartButton.Name = "restartButton";
+            this.restartButton.Size = new System.Drawing.Size(284, 23);
+            this.restartButton.TabIndex = 7;
+            this.restartButton.Text = "Restart";
+            this.restartButton.UseVisualStyleBackColor = true;
+            this.restartButton.Click += new System.EventHandler(this.restartButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.restartButton);
             this.Controls.Add(this.finishButton);
             this.Controls.Add(this.letterTextBox);
             this.Controls.Add(this.wordProgressBar);
@@ -154,9 +167,10 @@
         private System.Windows.Forms.NumericUpDown targetWordCountNumericUpDown;
         private System.Windows.Forms.Label targetWordCountLabel;
         private System.Windows.Forms.ProgressBar wordProgressBar;
-        private System.Windows.Forms.TextBox letterTextBox;
         private System.Windows.Forms.Button finishButton;
         private System.Windows.Forms.TextBox resultBox;
+        private System.Windows.Forms.TextBox letterTextBox;
+        private System.Windows.Forms.Button restartButton;
     }
 }
 

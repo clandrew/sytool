@@ -23,19 +23,19 @@ namespace ystool
         Mode mode;
         StringBuilder allText;
         int currentWordStartIndex;
-
         int wordCount;
 
         public Form1()
         {
             InitializeComponent();
 
-            allText = new StringBuilder();
-
+            ResetTextField();
             UpdateControlVisibility(Mode.ChooseTarget);
+        }
 
-            finishButton.Enabled = false;
-
+        void ResetTextField()
+        {
+            allText = new StringBuilder();
             wordCount = 0;
             currentWordStartIndex = -1;
         }
@@ -53,6 +53,7 @@ namespace ystool
             finishButton.Visible = mode == Mode.Type;
 
             resultBox.Visible = mode == Mode.ViewResult;
+            restartButton.Visible = mode == Mode.ViewResult;
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -60,7 +61,11 @@ namespace ystool
             UpdateControlVisibility(Mode.Type);
 
             wordProgressBar.Minimum = 0;
+            wordProgressBar.Value = 0;
             wordProgressBar.Maximum = (int)targetWordCountNumericUpDown.Value;
+
+            finishButton.Enabled = false;
+
             this.Focus();
         }
 
@@ -114,6 +119,12 @@ namespace ystool
             {
                 resultBox.SelectAll();
             }
+        }
+
+        private void restartButton_Click(object sender, EventArgs e)
+        {
+            ResetTextField();
+            UpdateControlVisibility(Mode.ChooseTarget);
         }
     }
 }
